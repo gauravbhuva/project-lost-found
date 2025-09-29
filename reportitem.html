@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Found Item | Lost & Found Campus Hub</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="box" class="text-primary h-6 w-6"></i>
+                        <span class="ml-2 text-xl font-bold text-primary">Lost & Found Hub</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-gray-700 px-1 pt-1 text-sm font-medium">Home</a>
+                    <a href="reportitem.html" class="border-b-2 border-primary px-1 pt-1 text-sm font-medium text-primary">Report Item</a>
+                    <a href="searchitems.html" class="text-gray-500 hover:text-gray-700 px-1 pt-1 text-sm font-medium">Browse</a>
+                    <button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-md text-sm font-medium">
+                        Sign In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="p-6 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">Report Found Item</h2>
+            </div>
+            <form class="p-6">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <div>
+                        <label for="item-name" class="block text-sm font-medium text-gray-700">Item Name</label>
+                        <input type="text" id="item-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                    </div>
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+                        <select id="category" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                            <option>Electronics</option>
+                            <option>Books</option>
+                            <option>ID Cards</option>
+<option>Keys</option>
+                            <option>Bags</option>
+                            <option>Accessories</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea id="description" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+                    </div>
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700">Found Location</label>
+                        <input type="text" id="location" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                    </div>
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-700">Date Found</label>
+                        <input type="date" id="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">Upload Photos</label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                            <div class="space-y-1 text-center">
+                                <i data-feather="upload" class="mx-auto h-12 w-12 text-gray-400"></i>
+                                <div class="flex text-sm text-gray-600">
+                                    <label class="relative cursor-pointer bg-white rounded-md font-medium text-primary hover:text-primary-dark focus-within:outline-none">
+                                        <span>Upload files</span>
+                                        <input type="file" class="sr-only" multiple>
+                                    </label>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button type="submit" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        Submit
+                    </button>
+                    <button type="reset" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        Cancel
+                    </button>
+                </div>
+</form>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
