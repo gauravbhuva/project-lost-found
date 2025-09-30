@@ -1,392 +1,147 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lost-Found Hub | Reuniting Students with Their Belongings</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#4F46E5',
-                        secondary: '#10B981',
-                        accent: '#F59E0B',
-                        dark: '#1F2937',
-                        light: '#F9FAFB'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-.item-card {
-            transition: all 0.3s ease;
-        }
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        .category-badge {
-            transition: all 0.2s ease;
-        }
-        .category-badge:hover {
-            transform: scale(1.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost & Found Campus Hub | Reuniting Students with Their Belongings</title>
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
-                        <i data-feather="box" class="text-primary h-6 w-6"></i>
-                        <span class="ml-2 text-xl font-bold text-primary">Lost-Found Hub</span>
-                    </div>
-                </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
-                    <a href="index.html" class="border-b-2 border-primary px-1 pt-1 text-sm font-medium text-primary">Home</a>
-                    <a href="reportitem.html" class="text-gray-500 hover:text-gray-700 px-1 pt-1 text-sm font-medium">Report Item</a>
-                    <a href="searchitems.html" class="text-gray-500 hover:text-gray-700 px-1 pt-1 text-sm font-medium">Browse</a>
-<a href="#" class="text-gray-500 hover:text-gray-700 px-1 pt-1 text-sm font-medium">About</a>
-                    <button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-md text-sm font-medium">
-                        Sign In
-                    </button>
-                </div>
-                <div class="-mr-2 flex items-center sm:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Hero Section -->
-    <div id="hero" class="bg-primary text-white">
-<div class="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                    Lost something on campus?
-                </h1>
-                <p class="mt-6 max-w-lg mx-auto text-xl">
-                    Our platform helps reunite students with their lost belongings through a secure and efficient system.
-                </p>
-                <div class="mt-10 sm:flex sm:justify-center">
-                    <div class="rounded-md shadow">
-                        <a href="reportitem.html" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
-                            Report Found Item
-                        </a>
-</div>
-                    <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                        <a href="searchitems.html" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-dark hover:bg-primary md:py-4 md:text-lg md:px-10">
-                            Search Lost Items
-                        </a>
-</div>
-                </div>
-            </div>
-        </div>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <span class="brand-icon">📦</span>
+        <span class="brand-text">Lost & Found Hub</span>
+      </div>
+      <div class="navbar-links" id="navbarLinks">
+        <a href="#" class="nav-link active">Home</a>
+        <a href="reportitem.html" class="nav-link">Report Item</a>
+        <a href="searchitems.html" class="nav-link">Browse</a>
+        <a href="#" class="nav-link">About</a>
+        <button class="btn btn-primary">Sign In</button>
+      </div>
+      <button class="hamburger" id="hamburgerBtn">☰</button>
     </div>
-
-    <!-- Categories -->
-    <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">
-            Browse by Category
-        </h2>
-        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            <a href="#" class="category-badge bg-white rounded-lg shadow p-4 text-center hover:bg-primary hover:text-white transition-colors">
-                <i data-feather="smartphone" class="mx-auto h-8 w-8 text-primary"></i>
-                <span class="mt-2 block text-sm font-medium">Electronics</span>
-            </a>
-            <a href="#" class="category-badge bg-white rounded-lg shadow p-4 text-center hover:bg-primary hover:text-white transition-colors">
-                <i data-feather="book" class="mx-auto h-8 w-8 text-primary"></i>
-                <span class="mt-2 block text-sm font-medium">Books</span>
-            </a>
-                <a href="#" class="category-badge bg-white rounded-lg shadow p-4 text-center hover:bg-primary hover:text-white transition-colors">
-                    <i data-feather="credit-card" class="mx-auto h-8 w-8 text-primary"></i>
-                    <span class="mt-2 block text-sm font-medium">ID Cards</span>
-                </a>
-<a href="#" class="category-badge bg-white rounded-lg shadow p-4 text-center hover:bg-primary hover:text-white transition-colors">
-                <i data-feather="key" class="mx-auto h-8 w-8 text-primary"></i>
-                <span class="mt-2 block text-sm font-medium">Keys</span>
-            </a>
-            <a href="#" class="category-badge bg-white rounded-lg shadow p-4 text-center hover:bg-primary hover:text-white transition-colors">
-                <i data-feather="briefcase" class="mx-auto h-8 w-8 text-primary"></i>
-                <span class="mt-2 block text-sm font-medium">Bags</span>
-            </a>
-            <a href="#" class="category-badge bg-white rounded-lg shadow p-4 text-center hover:bg-primary hover:text-white transition-colors">
-                <i data-feather="watch" class="mx-auto h-8 w-8 text-primary"></i>
-                <span class="mt-2 block text-sm font-medium">Accessories</span>
-            </a>
-        </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="reportitem.html">Report Item</a>
+      <a href="searchitems.html">Browse</a>
     </div>
+  </nav>
 
-    <!-- Recent Items -->
-    <div class="bg-gray-100 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-2xl font-bold text-gray-900">
-                    Recently Added Items
-                </h2>
-                <a href="#" class="text-primary hover:text-primary-dark font-medium">View all →</a>
-            </div>
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <!-- Item Card 1 -->
-                <div class="item-card bg-white overflow-hidden shadow rounded-lg">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <img src="http://static.photos/technology/640x360/1" alt="Lost item" class="h-full w-full object-cover">
-                    </div>
-                    <div class="px-4 py-5 sm:p-6">
-                        <div class="flex items-center">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                Found
-                            </span>
-                            <span class="ml-2 text-sm text-gray-500">2 hours ago</span>
-                        </div>
-                        <h3 class="mt-2 text-lg font-medium text-gray-900">Apple AirPods Pro</h3>
-                        <p class="mt-1 text-sm text-gray-500">Found near the library entrance. In a black case with initials "JM" engraved.</p>
-                        <div class="mt-4 flex items-center">
-                            <i data-feather="map-pin" class="h-4 w-4 text-gray-400"></i>
-                            <span class="ml-1 text-sm text-gray-500">Main Library, North Entrance</span>
-                        </div>
-                        <div class="mt-4">
-                            <button class="w-full bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-md text-sm font-medium">
-                                Contact Finder
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item Card 2 -->
-                <div class="item-card bg-white overflow-hidden shadow rounded-lg">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <img src="http://static.photos/education/640x360/2" alt="Lost item" class="h-full w-full object-cover">
-                    </div>
-                    <div class="px-4 py-5 sm:p-6">
-                        <div class="flex items-center">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                Lost
-                            </span>
-                            <span class="ml-2 text-sm text-gray-500">Yesterday</span>
-                        </div>
-                        <h3 class="mt-2 text-lg font-medium text-gray-900">Calculus Textbook</h3>
-                        <p class="mt-1 text-sm text-gray-500">Lost my calculus textbook. Has yellow highlights and notes on chapters 3-5.</p>
-                        <div class="mt-4 flex items-center">
-                            <i data-feather="map-pin" class="h-4 w-4 text-gray-400"></i>
-                            <span class="ml-1 text-sm text-gray-500">Math Building, Room 204</span>
-                        </div>
-                        <div class="mt-4">
-                            <button class="w-full bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-md text-sm font-medium">
-                                Contact Owner
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item Card 3 -->
-                <div class="item-card bg-white overflow-hidden shadow rounded-lg">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <img src="http://static.photos/workspace/640x360/3" alt="Lost item" class="h-full w-full object-cover">
-                    </div>
-                    <div class="px-4 py-5 sm:p-6">
-                        <div class="flex items-center">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                Found
-                            </span>
-                            <span class="ml-2 text-sm text-gray-500">3 days ago</span>
-                        </div>
-                        <h3 class="mt-2 text-lg font-medium text-gray-900">Student ID Card</h3>
-                        <p class="mt-1 text-sm text-gray-500">Found a student ID near the cafeteria. Name: Sarah Johnson.</p>
-                        <div class="mt-4 flex items-center">
-                            <i data-feather="map-pin" class="h-4 w-4 text-gray-400"></i>
-                            <span class="ml-1 text-sm text-gray-500">Student Union, Cafeteria</span>
-                        </div>
-                        <div class="mt-4">
-                            <button class="w-full bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-md text-sm font-medium">
-                                Contact Finder
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Hero Section -->
+  <header id="home" class="hero-section">
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Lost something on campus?</h1>
+      <p class="hero-subtitle">Our platform helps reunite students with their lost belongings through a secure and efficient system.</p>
+      <div class="hero-buttons">
+        <a href="reportitem.html" class="btn btn-light">Report Found Item</a>
+        <a href="searchitems.html" class="btn btn-outline">Search Lost Items</a>
+      </div>
     </div>
+  </header>
 
-    <!-- How It Works -->
-    <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <h2 class="text-2xl font-bold text-gray-900">
-                How It Works
-            </h2>
-            <p class="mt-4 max-w-2xl mx-auto text-gray-500">
-                Reuniting lost items with their owners in three simple steps
-            </p>
-        </div>
-        <div class="mt-16">
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
-                <div class="pt-6">
-                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8">
-                        <div class="-mt-6">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
-                                <i data-feather="edit" class="h-6 w-6"></i>
-                            </div>
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">1. Report</h3>
-                            <p class="mt-2 text-sm text-gray-500">
-                                Submit details about your lost item or an item you've found with photos and location.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-6">
-                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8">
-                        <div class="-mt-6">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-secondary text-white">
-                                <i data-feather="search" class="h-6 w-6"></i>
-                            </div>
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">2. Match</h3>
-                            <p class="mt-2 text-sm text-gray-500">
-                                Our system automatically matches similar items and notifies potential owners.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="pt-6">
-                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8">
-                        <div class="-mt-6">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-accent text-white">
-                                <i data-feather="message-square" class="h-6 w-6"></i>
-                            </div>
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">3. Connect</h3>
-                            <p class="mt-2 text-sm text-gray-500">
-                                Securely message the finder/owner through our platform to arrange retrieval.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Categories -->
+  <section class="category-section">
+    <h2 class="section-title">Browse by Category</h2>
+    <div class="category-grid">
+      <div class="category-card">📱 Electronics</div>
+      <div class="category-card">📖 Books</div>
+      <div class="category-card">🔑 Keys</div>
+      <div class="category-card">💼 Bags</div>
+      <div class="category-card">⌚ Accessories</div>
     </div>
-<!-- CTA -->
-    <div class="bg-secondary text-white">
-        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold">
-                    Ready to find your lost item?
-                </h2>
-                <p class="mt-4 max-w-2xl mx-auto">
-                    Join thousands of students who have successfully reunited with their belongings.
-                </p>
-                <div class="mt-8">
-                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-secondary bg-white hover:bg-gray-100">
-                        Get Started
-                        <i data-feather="arrow-right" class="ml-2 h-4 w-4"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+  </section>
+
+  <!-- Recently Added Items -->
+  <section class="recent-items-section">
+    <div class="recent-header">
+      <h2 class="section-title">Recently Added Items</h2>
+      <a href="searchitems.html" class="view-all">View all →</a>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300">
-        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                <div>
-                    <h3 class="text-white text-lg font-medium mb-4">Lost & Found Hub</h3>
-                    <p class="text-sm">
-                        Reuniting students with their lost belongings since 2023.
-                    </p>
-                    <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i data-feather="facebook" class="h-5 w-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i data-feather="twitter" class="h-5 w-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i data-feather="instagram" class="h-5 w-5"></i>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-white text-lg font-medium mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-sm hover:text-white">Home</a></li>
-                        <li><a href="reportitem.html" class="text-sm hover:text-white">Report Lost Item</a></li>
-                        <li><a href="searchitems.html" class="text-sm hover:text-white">Browse Found Items</a></li>
-<li><a href="#" class="text-sm hover:text-white">Campus Map</a></li>
-                        <li><a href="#" class="text-sm hover:text-white">FAQs</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-white text-lg font-medium mb-4">Resources</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-sm hover:text-white">Help Center</a></li>
-                        <li><a href="#" class="text-sm hover:text-white">Safety Tips</a></li>
-                        <li><a href="#" class="text-sm hover:text-white">Privacy Policy</a></li>
-                        <li><a href="#" class="text-sm hover:text-white">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-white text-lg font-medium mb-4">Contact</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i data-feather="mail" class="h-4 w-4 mr-2"></i>
-                            <span class="text-sm">help@lostfoundhub.edu</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="phone" class="h-4 w-4 mr-2"></i>
-                            <span class="text-sm">(555) 123-4567</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="map-pin" class="h-4 w-4 mr-2"></i>
-                            <span class="text-sm">Student Services Building, Room 101</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-12 border-t border-gray-800 pt-8">
-                <p class="text-sm text-center">
-                    &copy; 2025 Lost-Found Hub. All rights reserved.
-                </p>
-            </div>
+    <div class="item-grid">
+      <!-- Item Card -->
+      <div class="item-card">
+        <img src="https://via.placeholder.com/400x250" alt="AirPods" class="item-image">
+        <div class="item-details">
+          <span class="item-status found">Found</span>
+          <span class="item-time">2 hours ago</span>
+          <h3 class="item-title">Apple AirPods Pro</h3>
+          <p class="item-description">Found near the library entrance. In a black case with initials "JM".</p>
+          <p class="item-location">📍 Main Library, North Entrance</p>
+          <button class="btn btn-primary full-width">Contact Finder</button>
         </div>
-    </footer>
+      </div>
+      <!-- More item-cards can be added -->
+    </div>
+  </section>
 
-    <script>
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            feather.replace();
-            
-            // Simple scroll animation
-            anime({
-                targets: '.item-card',
-                translateY: [20, 0],
-                opacity: [0, 1],
-                delay: anime.stagger(100),
-                easing: 'easeOutExpo'
-            });
-            
-            // Initialize Vanta.js background
-            VANTA.NET({
-                el: "#hero",
-                color: 0x4f46e5,
-                backgroundColor: 0x4f46e5,
-points: 10,
-                maxDistance: 20,
-                spacing: 15
-            });
-        });
-    </script>
+  <!-- How It Works -->
+  <section class="how-section">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Reuniting lost items with their owners in three simple steps</p>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-icon step1">✍️</div>
+        <h3>1. Report</h3>
+        <p>Submit details about your lost or found item with photos and location.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-icon step2">🔍</div>
+        <h3>2. Match</h3>
+        <p>Our system automatically matches items and notifies potential owners.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-icon step3">💬</div>
+        <h3>3. Connect</h3>
+        <p>Securely message the finder/owner to arrange retrieval.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action -->
+  <section class="cta-section">
+    <h2>Ready to find your lost item?</h2>
+    <p>Join thousands of students who have reunited with their belongings.</p>
+    <a href="#home" class="btn btn-light">Get Started →</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h3>Lost & Found Hub</h3>
+        <p>Reuniting students with their lost belongings since 2023.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="#home">Home</a>
+        <a href="reportitem.html">Report Lost Item</a>
+        <a href="searchitems.html">Browse Found Items</a>
+        <a href="https://maps.app.goo.gl/5foepRm5BGZK3WD4A">Campus Map</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <a href="#">Help Center</a>
+        <a href="#">Safety Tips</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <p>📧 23it251.gaurav.bhuva@vvpedulink.ac.in</p>
+        <p>📞 (555) 123-4567</p>
+        <p>📍 Student Section , Admin Office</p>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Lost & Found Campus Hub. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
