@@ -5,9 +5,11 @@ import Home from './pages/Home';
 import ReportItem from './pages/ReportItem';
 import Browse from './pages/Browse';
 import About from './pages/About';
+import ReduxProvider from '@store/ReduxProvider'
 
 function App() {
   return (
+    <ReduxProvider>
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
         <Navigation />
@@ -22,6 +24,7 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </ReduxProvider>
   );
 }
 
