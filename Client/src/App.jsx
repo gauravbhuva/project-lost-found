@@ -5,25 +5,29 @@ import Home from './pages/Home';
 import ReportItem from './pages/ReportItem';
 import Browse from './pages/Browse';
 import About from './pages/About';
+import Login from '@/pages/Login'
+import Signup from '@/pages/signup'
 import ReduxProvider from '@store/ReduxProvider'
 
 function App() {
   return (
     <ReduxProvider>
-    <BrowserRouter>
-      <div className="flex flex-col min-h-screen">
-        <Navigation />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/report" element={<ReportItem />} />
-            <Route path="/browse" element={<Browse />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <div className="flex flex-col min-h-screen">
+          <Navigation />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/report" element={<ReportItem />} />
+              <Route path="/browse" element={<Browse />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
     </ReduxProvider>
   );
 }
