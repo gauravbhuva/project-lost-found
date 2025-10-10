@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+@layer components {
+  .item-card {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .item-card:hover {
+    @apply -translate-y-1 shadow-xl;
+  }
+
+  .category-badge {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .category-badge:hover {
+    @apply scale-105;
+  }
+}
