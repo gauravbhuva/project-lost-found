@@ -31,7 +31,7 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
- 
+  loginHistories LoginHistory[]
 }
 
 model Role {
@@ -40,3 +40,31 @@ model Role {
   users User[]
 }
 
+enum DeviceType {
+  desktop
+  mobile
+  tablet
+  console
+  smarttv
+  wearable
+  embedded
+  unknown
+}
+
+model LoginHistory {
+  id             String     @id @default(uuid())
+  userId         String
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userAgent      String? // full UA string
+  ip             String? // optional client IP
+  browser        String?
+  browserVersion String?
+  os             String?
+  osVersion      String?
+  deviceType     DeviceType @default(unknown)
+  deviceVendor   String?
+  deviceModel    String?
+  createdAt      DateTime   @default(now())
+
+  @@index([userId])
+}
