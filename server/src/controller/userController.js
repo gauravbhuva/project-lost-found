@@ -1,6 +1,7 @@
 import { notFoundResponse, successResponse, successResponseWithData,errorResponse } from "../utils/apiResponse.js"
 import tryCatchAsync from "../utils/tryCatchAsync.js"
 import setTokenCookie  from "../utils/setTokenCookie.js";
+import userService from "../services/userService.js";
 
 const createUser = tryCatchAsync(async (req, res) => {
   const {user,token} = await userService.createUser(req.body);

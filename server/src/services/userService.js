@@ -18,8 +18,6 @@ function removeEmptyFields(obj) {
 const createUser = async (userData) => {
 
   const existUser = await userRepo.getUserByIdOrEmail(userData?.email);
-
-  console.log("===>existUser",existUser);
   
 
   if (existUser) {

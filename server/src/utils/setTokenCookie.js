@@ -1,9 +1,10 @@
 // utils/setTokenCookie.js
-const setTokenCookie = (res, token) => {
+const setTokenCookie = async(res, token) => {
+  console.log("===>",token);
+  
   res.cookie('token', `Bearer ${token}`, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'Strict',
+    secure: true,
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 };
