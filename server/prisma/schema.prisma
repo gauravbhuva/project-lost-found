@@ -1,0 +1,94 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+ 
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum enumRole {
+  STUDENT
+  ADMIN
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  userName     String
+  password     String
+  role         Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  roleId       String
+  profileImage String?
+  phoneNumber  Int?
+  resetToken   String?
+  verifyToken  String?
+  isVerified   Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  loginHistories LoginHistory[]
+   lostThing      lostThings[]
+}
+
+model Role {
+  id    String   @id @default(uuid())
+  name  enumRole @unique
+  users User[]
+}
+
+enum DeviceType {
+  desktop
+  mobile
+  tablet
+  console
+  smarttv
+  wearable
+  embedded
+  unknown
+}
+
+model LoginHistory {
+  id             String     @id @default(uuid())
+  userId         String
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userAgent      String? // full UA string
+  ip             String? // optional client IP
+  browser        String?
+  browserVersion String?
+  os             String?
+  osVersion      String?
+  deviceType     DeviceType @default(unknown)
+  deviceVendor   String?
+  deviceModel    String?
+  createdAt      DateTime   @default(now())
+
+  @@index([userId])
+}
+
+enum category {
+  electronics
+  books
+  id
+  keys
+  bags
+  accessories
+}
+
+model lostThings {
+    id             String     @id @default(uuid())
+    founderId      String     
+    user           User       @relation(fields: [founderId], references: [id], onDelete: Cascade)
+    itemName       String
+    location       String
+    category       category
+    description    String?
+    foundDate      DateTime
+    image          String?
+    isActive       Boolean    @default(true)
+    createdAt      DateTime   @default(now())
+}
