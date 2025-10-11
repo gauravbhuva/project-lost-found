@@ -12,7 +12,7 @@ export const registerSchema = [
     .trim()
     .notEmpty()
     .withMessage("username is required")
-    .isAlpha()
+     .isAlphanumeric('en-US', { ignore: ' ' })
     .withMessage("username must contain only letters"),
 
   check("password")

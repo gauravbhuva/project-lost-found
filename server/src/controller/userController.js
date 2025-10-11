@@ -4,11 +4,13 @@ import setTokenCookie  from "../utils/setTokenCookie.js";
 import userService from "../services/userService.js";
 
 const createUser = tryCatchAsync(async (req, res) => {
-  const {user,token} = await userService.createUser(req.body);
   
-   setTokenCookie(res, token);
+  
+  const {user} = await userService.createUser(req.body);
+  
+  //  setTokenCookie(res, token);
 
-  return successResponseWithData(res,"user created.",user)
+  return successResponseWithData(res,"Account created successfully.",user)
 });
 
 const getUser = tryCatchAsync(async (req, res) => {

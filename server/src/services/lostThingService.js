@@ -29,7 +29,12 @@ const getAll = async(filters = {}) => {
     return await lostThingRepo.getAllLostThings(filters)
 }
 
+const updateItem = async(id,data) =>{
+    return await lostThingRepo.updateItem(id,data)
+}
+
 export default {
     create,
-    getAll
+    getAll,
+    updateItem
 }

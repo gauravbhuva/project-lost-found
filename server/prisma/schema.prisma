@@ -18,7 +18,7 @@ enum enumRole {
 model User {
   id           String   @id @default(uuid())
   email        String   @unique
-  userName    String
+  userName     String
   password     String
   role         Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
   roleId       String
@@ -32,7 +32,7 @@ model User {
   updatedAt    DateTime @updatedAt
 
   loginHistories LoginHistory[]
-   lostThing      lostThings?
+   lostThing      lostThings[]
 }
 
 model Role {
@@ -81,7 +81,7 @@ enum category {
 
 model lostThings {
     id             String     @id @default(uuid())
-    founderId      String     @unique
+    founderId      String     
     user           User       @relation(fields: [founderId], references: [id], onDelete: Cascade)
     itemName       String
     location       String

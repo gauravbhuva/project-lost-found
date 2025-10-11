@@ -10,7 +10,7 @@ const upload = createUploader([".jpg", ".jpeg"])
 
 const Router = express.Router();
 
-Router.post('/create',validate(registerSchema),userController.createUser);
+Router.post('/create',userController.createUser);
 Router.get('/all',authMiddleware,requireRole('ADMIN'),userController.getUsers);
 Router.get('/:id',authMiddleware,userController.getUser);
 Router.put('/edit',authMiddleware,upload.single("file"),userController.updateUser)

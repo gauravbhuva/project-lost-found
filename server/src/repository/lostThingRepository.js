@@ -25,13 +25,24 @@ const getAllLostThings = async (filters = {}) => {
   }
 
   return prisma.lostThings.findMany({
-    where,
+    where:{
+        ...where,
+        isActive:true
+    },
     include: { user: false },
     orderBy: { createdAt: 'desc' },
   });
 };
 
+const updateItem = async(id,data) =>{
+    return await prisma.lostThings.update({
+        where:{id},
+        data:data
+    })
+}
+
 export default {
     create,
-    getAllLostThings
+    getAllLostThings,
+    updateItem
 }

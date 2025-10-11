@@ -37,18 +37,8 @@ const createUser = async (userData) => {
 
   const data = await userRepo.createUser(newUser);
 
-  const token = jwt.sign(
-    {
-      id: data.id,
-      name: data.firstName,
-      email: data.email,
-      roleId: data.roleId
-    },
-    process.env.JWT_SECRET,
-    { expiresIn: appConfig?.jwtExpiration || '1h' }
-  );
 
-  return { user: data, token }
+  return { user: data }
 };
 
 const getUser = async (id) => {
