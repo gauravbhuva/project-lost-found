@@ -17,40 +17,8 @@ const getDateRange = (filter) => {
   }
 };
 
-const allItems = [
-  {
-    id: 1,
-    status: 'Found',
-    timeAgo: '2 hours ago',
-    title: 'Apple AirPods Pro',
-    description: 'Found near the library entrance. In a black case with initials "JM" engraved.',
-    location: 'Main Library, North Entrance',
-    image: 'https://images.pexels.com/photos/3825517/pexels-photo-3825517.jpeg?auto=compress&cs=tinysrgb&w=640&h=360',
-    category: 'Electronics',
-  },
-  {
-    id: 2,
-    status: 'Lost',
-    timeAgo: 'Yesterday',
-    title: 'Calculus Textbook',
-    description: 'Lost my calculus textbook. Has yellow highlights and notes on chapters 3-5.',
-    location: 'Math Building, Room 204',
-    image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=640&h=360',
-    category: 'Books',
-  },
-  {
-    id: 3,
-    status: 'Found',
-    timeAgo: '3 days ago',
-    title: 'Student ID Card',
-    description: 'Found a student ID near the cafeteria. Name: Sarah Johnson.',
-    location: 'Student Union, Cafeteria',
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=640&h=360',
-    category: 'ID Cards',
-  },
-];
 
-const foundItems = allItems.filter(item => item.status === 'Found');
+
 
 export default function Browse() {
   const [filters, setFilters] = useState({

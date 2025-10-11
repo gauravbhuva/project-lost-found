@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import { useCreateUser } from '@hooks/useHandleUser';
 
 export default function Signup() {
   const [formData, setFormData] = useState({
-    name: '',
+    userName: '',
     email: '',
     password: '',
   });
   const [emailError, setEmailError] = useState('');
+ const { mutate: createUser, isLoading } = useCreateUser();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,13 +21,8 @@ export default function Signup() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.email.endsWith('@vvpedulink.ac.in')) {
-      setEmailError('Invalid email domain. Please use a @vvpedulink.ac.in email address.');
-      return;
-    }
-    setEmailError('');
-    console.log('Signup submitted:', formData);
+   e.preventDefault();
+    createUser(formData);
   };
 
   return (
@@ -39,7 +37,7 @@ export default function Signup() {
             <input
               type="text"
               id="name"
-              name="name"
+              name="userName"
               value={formData.name}
               onChange={handleChange}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary"
@@ -78,6 +76,7 @@ export default function Signup() {
           <div>
             <button
               type="submit"
+              disabled={isLoading}
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
             >
               Sign Up

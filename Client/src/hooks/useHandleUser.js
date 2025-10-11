@@ -2,6 +2,8 @@
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import api from "@/services/api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 
 const API_URL = "/user";
 
@@ -58,8 +60,9 @@ export const useUserById = (id, enabled = true) => {
 };
 
 // ✅ Create subject
-export const useCreateSubject = () => {
+export const useCreateUser = () => {
   const queryClient = useQueryClient();
+   const navigate = useNavigate()
 
   return useMutation({
     mutationFn: createUser,
@@ -67,6 +70,7 @@ export const useCreateSubject = () => {
       if (res.status === 1) {
         toast.success(res.message || "User created successfully");
         queryClient.invalidateQueries(["subjects"]);
+        navigate('/login')
       } else {
         toast.error(res.message || "Failed to create user");
       }

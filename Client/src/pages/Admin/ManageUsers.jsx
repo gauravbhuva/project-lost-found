@@ -7,7 +7,7 @@ export default function ManageUsers() {
       <div className="mt-8 bg-white shadow rounded-lg p-6">
         <h2 className="text-xl font-bold text-gray-900 mb-4">User List</h2>
         {/* Placeholder for a table of users */}
-        <p className="text-gray-500">A table of users with options to view, edit, or delete will be displayed here.</p>
+        
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import ItemCard from '../components/ItemCard';
 import CategoryBadge from '../components/CategoryBadge';
 import MainLayout from '@/Layout/MainLayout';
 import { useSelector } from 'react-redux';
+import { useItemsQuery } from "@hooks/useItems";
 
 const categories = [
   { icon: FiSmartphone, label: 'Electronics' },
@@ -25,38 +26,12 @@ const categories = [
   { icon: FiWatch, label: 'Accessories' },
 ];
 
-const recentItems = [
-  {
-    id: 1,
-    status: 'Found',
-    timeAgo: '2 hours ago',
-    title: 'Apple AirPods Pro',
-    description: 'Found near the library entrance. In a black case with initials "JM" engraved.',
-    location: 'Main Library, North Entrance',
-    image: 'https://images.pexels.com/photos/3825517/pexels-photo-3825517.jpeg?auto=compress&cs=tinysrgb&w=640&h=360',
-  },
-  {
-    id: 2,
-    status: 'Lost',
-    timeAgo: 'Yesterday',
-    title: 'Calculus Textbook',
-    description: 'Lost my calculus textbook. Has yellow highlights and notes on chapters 3-5.',
-    location: 'Math Building, Room 204',
-    image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=640&h=360',
-  },
-  {
-    id: 3,
-    status: 'Found',
-    timeAgo: '3 days ago',
-    title: 'Student ID Card',
-    description: 'Found a student ID near the cafeteria. Name: Sarah Johnson.',
-    location: 'Student Union, Cafeteria',
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=640&h=360',
-  },
-];
+
+
 
 export default function Home() {
   const { isAuthenticated } = useSelector(state => state.authReducer)
+  const { data, isLoading } = useItemsQuery({});
   return (
     <MainLayout>
       <div className="bg-primary text-white">
@@ -119,9 +94,19 @@ export default function Home() {
                 </Link>
               </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {recentItems.map((item) => (
-                  <ItemCard key={item.id} item={item} />
-                ))}
+                {data && data.length > 0 ? (
+                  [...data]
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                    .slice(0, 3)
+                    .map((item) => (
+                      <ItemCard key={item.id} item={item} />
+                    ))
+                )
+                  :
+                  <div className='w-dvw py-4'>
+                    <h4 className='text-center'>No Data Found</h4>
+                  </div>
+                }
               </div>
             </div>
           </div>

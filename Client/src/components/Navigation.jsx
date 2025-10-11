@@ -2,14 +2,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FiBox, FiMenu } from 'react-icons/fi';
 import { useState } from 'react';
 import { logout } from '@/redux-store/slices/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 
 
 export default function Navigation({ isAuthenticated }) {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+
+  
 
   const handleLogout = () => {
     localStorage.clear('token')
@@ -65,7 +66,7 @@ export default function Navigation({ isAuthenticated }) {
               About
             </Link>
             {
-              !isAuthenticated ? (
+              !isAuthenticated  ? (
                 <button
                   className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
                   onClick={() => navigate('/login')}
