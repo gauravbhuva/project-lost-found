@@ -13,6 +13,8 @@ import {
 } from 'react-icons/fi';
 import ItemCard from '../components/ItemCard';
 import CategoryBadge from '../components/CategoryBadge';
+import MainLayout from '@/Layout/MainLayout';
+import { useSelector } from 'react-redux';
 
 const categories = [
   { icon: FiSmartphone, label: 'Electronics' },
@@ -54,8 +56,9 @@ const recentItems = [
 ];
 
 export default function Home() {
+  const { isAuthenticated } = useSelector(state => state.authReducer)
   return (
-    <div>
+    <MainLayout>
       <div className="bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -97,29 +100,34 @@ export default function Home() {
               key={index}
               icon={category.icon}
               label={category.label}
-              onClick={() => {}}
+              onClick={() => { }}
             />
           ))}
         </div>
       </div>
 
-      <div className="bg-gray-100 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Recently Added Items
-            </h2>
-            <Link to="/browse" className="text-primary hover:text-primary-dark font-medium transition-colors">
-              View all →
-            </Link>
+      {
+        isAuthenticated && (
+          <div className="bg-gray-100 py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Recently Added Items
+                </h2>
+                <Link to="/browse" className="text-primary hover:text-primary-dark font-medium transition-colors">
+                  View all →
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {recentItems.map((item) => (
+                  <ItemCard key={item.id} item={item} />
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {recentItems.map((item) => (
-              <ItemCard key={item.id} item={item} />
-            ))}
-          </div>
-        </div>
-      </div>
+
+        )
+      }
 
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center">
@@ -192,6 +200,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </MainLayout>
   );
 }
