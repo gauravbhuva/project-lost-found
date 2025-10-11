@@ -44,6 +44,7 @@ const verifyToken = async (token) => {
     if (token.startsWith('Bearer ')) {
       
       token = token.split(' ')[1];
+    
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       if (!decoded) {
         throw new AppError(401, 'Invalid or expired token');

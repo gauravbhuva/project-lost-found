@@ -107,3 +107,18 @@ export const subjectSchema = [
     .isIn(["Active", "Inactive"])
     .withMessage("Status must be either active or inactive"),
 ];
+
+export const lostThingSchema = [
+  check("itemName")
+  .trim()
+  .notEmpty()
+  .withMessage("item name is required."),
+
+  check("category")
+  .notEmpty()
+  .withMessage("category is required."),
+
+  check("description")
+  .optional()
+  
+];

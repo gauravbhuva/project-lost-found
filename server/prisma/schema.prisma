@@ -32,6 +32,7 @@ model User {
   updatedAt    DateTime @updatedAt
 
   loginHistories LoginHistory[]
+   lostThing      lostThings?
 }
 
 model Role {
@@ -67,4 +68,27 @@ model LoginHistory {
   createdAt      DateTime   @default(now())
 
   @@index([userId])
+}
+
+enum category {
+  electronics
+  books
+  id
+  keys
+  bags
+  accessories
+}
+
+model lostThings {
+    id             String     @id @default(uuid())
+    founderId      String     @unique
+    user           User       @relation(fields: [founderId], references: [id], onDelete: Cascade)
+    itemName       String
+    location       String
+    category       category
+    description    String?
+    foundDate      DateTime
+    image          String?
+    isActive       Boolean    @default(true)
+    createdAt      DateTime   @default(now())
 }
